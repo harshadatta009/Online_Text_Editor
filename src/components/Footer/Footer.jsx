@@ -1,23 +1,14 @@
-// src/components/Footer/Footer.jsx
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { FaReact } from "react-icons/fa"; // <-- React icon
+import { FaReact } from "react-icons/fa";
+import styles from "./Footer.module.css";
 
 export const Footer = () => {
 	const { dark } = useContext(ThemeContext);
 	const year = new Date().getFullYear();
+
 	return (
-		<footer
-			className={`text-center py-3 mt-4`}
-			style={{
-				background: dark ? "#181a1b" : "#f8f9fa",
-				color: dark ? "#858c91" : "#6c757d",
-				fontFamily: "Segoe UI, Arial, sans-serif",
-				fontSize: "1rem",
-				borderTop: dark ? "1px solid #232425" : "1px solid #e6e6e6",
-				letterSpacing: ".02em",
-			}}
-		>
+		<footer className={`${styles.footer} ${dark ? styles["footer-dark"] : ""}`}>
 			<span>
 				&copy; {year} Harsha Datta. Made with{" "}
 				<FaReact
@@ -35,15 +26,12 @@ export const Footer = () => {
 				href="https://github.com/harshadatta009/Text-Utils"
 				target="_blank"
 				rel="noopener noreferrer"
-				style={{
-					color: dark ? "#61dafb" : "#007bff",
-					textDecoration: "underline",
-					fontWeight: 500,
-					marginLeft: 6,
-				}}
+				className={`${styles.link} ${dark ? styles["link-dark"] : ""}`}
 			>
 				GitHub Repo
 			</a>
 		</footer>
 	);
 };
+
+export default Footer;
