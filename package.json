@@ -1,6 +1,6 @@
 {
-  "homepage": "https://harshadatta009.github.io/Text-Utils",
-  "name": "Online-Text-Editor",
+  "homepage": "https://github.com/harshadatta009/Online_Text_Editor",
+  "name": "Online_Text_Editor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
