@@ -1,72 +1,87 @@
-# Getting Started with Create React App
+# Text Utils
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive, feature‑rich rich‑text editor built with React and Bootstrap. Text Utils provides live editing, formatting, text‑manipulation utilities, autosave, export options, and theming—perfect for your frontend portfolio or as a standalone text‑processing tool.
 
-#LIVE WEBSITE
-[LINK](https://harshadatta009.github.io/Text-Utils/).
-## Available Scripts
+[Live Demo ↗︎](https://harshadatta009.github.io/Text-Utils)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. [Features](#features)
+2. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+3. [Available Scripts](#available-scripts)
+4. [Usage](#usage)
+5. [Project Structure](#project-structure)
+6. [Technologies](#technologies)
+7. [Author](#author)
+8. [License](#license)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Editor Core
 
-### `npm run build`
+- **Rich Text Editing**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Bold, _italic_, <u>underline</u>
+  - Unordered & ordered lists
+  - Undo / Redo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Live ContentEditable Area**
+  - In‑browser editable region powered by React Context (`EditorContext`)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Text Utilities
 
-### `npm run eject`
+- Convert text to **UPPERCASE**
+- Convert text to **lowercase**
+- Remove **extra spaces**
+- **Copy** full content to clipboard
+- **Clear** all text
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Toolbar & Shortcuts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Floating **Formatting Toolbar** with:
+  - Text formatting & utility actions
+  - Real‑time notification feedback on action success/failure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Document Management
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Save as TXT** — download current content as a `.txt` file
+- **Autosave & Draft Recovery** — content saved to local storage and reloaded on startup
 
-## Learn More
+### Information & Statistics
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Word, character, and line count** (dynamic)
+- **Live Preview** pane showing formatted output
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### UI & Theme
 
-### Code Splitting
+- **Responsive**, **minimalist** layout (Bootstrap 5)
+- **Light / Dark** theme toggle across Navbar, editor, preview, and footer
+- **Navbar** — theme‑aware, modular, with quick‑access action buttons
+- **Animated Footer** — live year, developer name, React icon, GitHub link; theme‑aware styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Notifications & Feedback
 
-### Analyzing the Bundle Size
+- Context‑driven toasts showing **success**, **info**, or **danger** messages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Prerequisites
 
-### Advanced Configuration
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- npm (comes with Node.js)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Installation
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/harshadatta009/Text-Utils.git
+   cd Text-Utils
+   ```
