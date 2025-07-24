@@ -2,7 +2,7 @@
 
 A modern, responsive, feature‑rich rich‑text editor built with React and Bootstrap. Text Utils provides live editing, formatting, text‑manipulation utilities, autosave, export options, and theming—perfect for your frontend portfolio or as a standalone text‑processing tool.
 
-[Live Demo ↗︎](https://github.com/harshadatta009/Online_Text_Editor)
+[Live Demo ↗︎](https://online-text-editor-six.vercel.app/)
 
 ---
 
