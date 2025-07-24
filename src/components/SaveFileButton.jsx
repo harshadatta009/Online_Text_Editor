@@ -3,7 +3,7 @@ import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { EditorContext } from "../context/EditorContext";
 import { saveTextAsFile } from "../utils/exportUtils";
 
- SaveFileButton=()=> {
+const SaveFileButton = () => {
 	const { content, showNotification } = useContext(EditorContext);
 
 	const handleSave = () => {
@@ -25,6 +25,6 @@ import { saveTextAsFile } from "../utils/exportUtils";
 			</Button>
 		</OverlayTrigger>
 	);
-}
+};
 
 export default SaveFileButton;

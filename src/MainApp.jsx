@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import Editor from "./components/Editor/Editor";
-import PreviewPane from "./components/PreviewPane/PreviewPane";
+import Preview from "./components/Preview/Preview";
 import Notification from "./components/Notification";
 import StatsBar from "./StatsBar";
 import { EditorContext } from "./context/EditorContext";
@@ -27,7 +27,7 @@ const MainApp = () => {
 				{/* <h1 className="mb-3">Online Text Editor</h1> */}
 				<Editor />
 				<StatsBar />
-				<PreviewPane />
+				<Preview />
 				<Notification />
 			</div>
 			<Footer />

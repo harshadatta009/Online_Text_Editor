@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { EditorContext } from "../../context/EditorContext";
 
-Preview = () => {
+const Preview = () => {
 	const { content } = useContext(EditorContext);
 
 	return (
