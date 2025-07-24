@@ -40,9 +40,7 @@ export default function Toolbar({ editorRef }) {
 		showNotification(`Redo`, "info");
 	};
 
-	// Helpers for text manipulation
-	// All operate on plain text (strip HTML)
-	const getPlainText = () => {
+	// Utility functions for text manipulation	const getPlainText = () => {
 		if (!editorRef.current) return "";
 		const div = document.createElement("div");
 		div.innerHTML = editorRef.current.innerHTML;
@@ -81,6 +79,12 @@ export default function Toolbar({ editorRef }) {
 		} catch {
 			showNotification("Failed to copy", "danger");
 		}
+	};
+	const handleClear = () => {
+		if (editorRef.current) editorRef.current.innerHTML = "";
+		setContent("");
+		showNotification("Editor cleared", "info");
+		editorRef.current && editorRef.current.focus();
 	};
 
 	return (
@@ -138,6 +142,13 @@ export default function Toolbar({ editorRef }) {
 				onClick={handleCopy}
 			>
 				<i className="bi bi-clipboard" /> Copy
+			</button>
+			<button
+				className="btn btn-outline-danger btn-sm"
+				title="Clear Editor"
+				onClick={handleClear}
+			>
+				<i className="bi bi-trash" /> Clear
 			</button>
 		</div>
 	);
