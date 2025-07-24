@@ -1,0 +1,29 @@
+body.bg-dark .form-control,
+body.bg-dark .form-control:focus,
+/* for cursor/focus state */
+body.bg-dark #editor,
+body.bg-dark #editor:focus {
+    background: #23272b !important;
+    color: #fafafa !important;
+    border-color: #34495e !important;
+    caret-color: #fff;
+    /* white cursor */
+}
+
+body.bg-dark .form-control::placeholder {
+    color: #bbb;
+}
+
+.navbar .btn,
+.navbar .btn:focus {
+    background: none !important;
+    border: none !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    transition: color 0.2s;
+}
+
+.navbar .btn:hover {
+    color: #3571e0 !important;
+    background: rgba(53, 113, 224, 0.07) !important;
+}
