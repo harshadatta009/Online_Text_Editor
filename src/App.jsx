@@ -3,7 +3,7 @@ import { EditorProvider } from "./context/EditorContext";
 import Navbar from "./components/Navbar/Navbar";
 import MainApp from "./MainApp";
 
-export default function App() {
+const App = () => {
 	return (
 		<ThemeProvider>
 			<EditorProvider>
@@ -12,4 +12,6 @@ export default function App() {
 			</EditorProvider>
 		</ThemeProvider>
 	);
-}
+};
+
+export default App;

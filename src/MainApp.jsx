@@ -7,7 +7,7 @@ import { EditorContext } from "./context/EditorContext";
 import useAutosave from "./hooks/useAutosave";
 import { Footer } from "./components/Footer/Footer";
 
-export default function MainApp() {
+const MainApp = () => {
 	const { content, setContent, showNotification } = useContext(EditorContext);
 
 	useEffect(() => {
@@ -33,4 +33,6 @@ export default function MainApp() {
 			<Footer />
 		</>
 	);
-}
+};
+
+export default MainApp;

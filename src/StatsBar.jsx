@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { EditorContext } from "./context/EditorContext";
 import { getStats } from "./utils/textStats";
 
-export default function StatsBar() {
+const StatsBar = () => {
 	const { content } = useContext(EditorContext);
 	const stats = getStats(content);
 
@@ -13,4 +13,6 @@ export default function StatsBar() {
 			<span>Lines: {stats.lines}</span>
 		</div>
 	);
-}
+};
+
+export default StatsBar;

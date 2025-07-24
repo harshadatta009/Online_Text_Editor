@@ -21,7 +21,7 @@ const formatActions = [
 	// Add more formatting actions as needed
 ];
 
-export default function Toolbar({ editorRef }) {
+const Toolbar = ({ editorRef }) => {
 	const { content, setContent, showNotification } = useContext(EditorContext);
 
 	const exec = (cmd) => {
@@ -40,7 +40,7 @@ export default function Toolbar({ editorRef }) {
 		showNotification(`Redo`, "info");
 	};
 
-	// Utility functions for text manipulation	const getPlainText = () => {
+	const getPlainText = () => {
 		if (!editorRef.current) return "";
 		const div = document.createElement("div");
 		div.innerHTML = editorRef.current.innerHTML;
@@ -152,4 +152,6 @@ export default function Toolbar({ editorRef }) {
 			</button>
 		</div>
 	);
-}
+};
+
+export default Toolbar;

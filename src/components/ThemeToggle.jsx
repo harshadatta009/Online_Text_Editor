@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-export default function ThemeToggle() {
+const ThemeToggle = () => {
 	const { isDark, toggleTheme } = useContext(ThemeContext);
 
 	return (
@@ -23,4 +23,6 @@ export default function ThemeToggle() {
 			</Button>
 		</OverlayTrigger>
 	);
-}
+};
+
+export default ThemeToggle;

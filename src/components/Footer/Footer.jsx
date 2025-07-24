@@ -1,9 +1,8 @@
-// src/components/Footer/Footer.jsx
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { FaReact } from "react-icons/fa"; // <-- React icon
+import { FaReact } from "react-icons/fa";
 
-export const Footer = () => {
+const Footer = () => {
 	const { dark } = useContext(ThemeContext);
 	const year = new Date().getFullYear();
 	return (

@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useRef } from "react";
 import { EditorContext } from "../../context/EditorContext";
 import Toolbar from "../Toolbar/Toolbar";
 
-export default function Editor() {
+const Editor = () => {
 	const { content, setContent } = useContext(EditorContext);
 	const editorRef = useRef(null);
 
@@ -48,4 +48,6 @@ export default function Editor() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default Editor;

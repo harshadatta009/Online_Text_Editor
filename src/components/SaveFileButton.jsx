@@ -1,10 +1,9 @@
-// src/components/SaveFileButton.jsx
 import { useContext } from "react";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { EditorContext } from "../context/EditorContext";
 import { saveTextAsFile } from "../utils/exportUtils";
 
-export default function SaveFileButton() {
+ SaveFileButton=()=> {
 	const { content, showNotification } = useContext(EditorContext);
 
 	const handleSave = () => {
@@ -27,3 +26,5 @@ export default function SaveFileButton() {
 		</OverlayTrigger>
 	);
 }
+
+export default SaveFileButton;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { EditorContext } from "../../context/EditorContext";
 
-export default function PreviewPane() {
+Preview = () => {
 	const { content } = useContext(EditorContext);
 
 	return (
@@ -17,4 +17,6 @@ export default function PreviewPane() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default Preview;
