@@ -10,15 +10,12 @@ const Editor = () => {
 		setContent(e.currentTarget.innerHTML);
 	};
 	useEffect(() => {
-		if (
-			editorRef.current &&
-			content &&
-			editorRef.current.innerHTML !== content
-		) {
-			editorRef.current.innerHTML = content;
+		if (!editorRef.current) return;
+		const nextContent = content || "";
+		if (editorRef.current.innerHTML !== nextContent) {
+			editorRef.current.innerHTML = nextContent;
 		}
-		// eslint-disable-next-line
-	}, []);
+	}, [content]);
 
 	return (
 		<div className="card shadow">
