@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { EditorContext } from "../../context/EditorContext";
 import Toolbar from "../Toolbar/Toolbar";
 
@@ -6,41 +6,25 @@ const Editor = () => {
 	const { content, setContent } = useContext(EditorContext);
 	const editorRef = useRef(null);
 
-	const handleInput = (e) => {
-		setContent(e.currentTarget.innerHTML);
+	const handleChange = (e) => {
+		setContent(e.target.value);
 	};
-	useEffect(() => {
-		if (!editorRef.current) return;
-		const nextContent = content || "";
-		if (editorRef.current.innerHTML !== nextContent) {
-			editorRef.current.innerHTML = nextContent;
-		}
-	}, [content]);
 
 	return (
-		<div className="card shadow">
+		<div className="card editor-card">
 			<div className="card-header">
 				<Toolbar editorRef={editorRef} />
 			</div>
 			<div className="card-body">
-				<div
+				<textarea
 					id="editor"
 					ref={editorRef}
-					className="form-control"
-					style={{
-						minHeight: 240,
-						background: "inherit",
-						border: "none",
-						outline: "none",
-						fontFamily: "inherit",
-						fontSize: "1rem",
-					}}
-					contentEditable
-					suppressContentEditableWarning
+					className="form-control editor-input"
 					spellCheck={true}
-					onInput={handleInput}
-					tabIndex={0} // makes div focusable by tab
-					aria-label="Text Editor (content editable region)"
+					onChange={handleChange}
+					value={content}
+					placeholder="Start typing here..."
+					aria-label="Text editor"
 				/>
 			</div>
 		</div>

@@ -3,17 +3,13 @@ import { EditorContext } from "../../context/EditorContext";
 
 const Preview = () => {
 	const { content } = useContext(EditorContext);
+	const previewText = content || "Start typing above...";
 
 	return (
-		<div className="card mt-3">
+		<div className="card preview-card">
 			<div className="card-header">Live Preview</div>
 			<div className="card-body">
-				<div
-					style={{ minHeight: 240 }}
-					dangerouslySetInnerHTML={{
-						__html: content || "<p><em>Start typing above…</em></p>",
-					}}
-				/>
+				<div className="preview-body">{previewText}</div>
 			</div>
 		</div>
 	);

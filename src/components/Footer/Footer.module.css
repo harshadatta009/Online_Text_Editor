@@ -1,43 +1,44 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
-    z-index: 999;
-    text-align: center;
-    padding: 1rem 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-    border-top: 1px solid #e6e6e6;
-    background: #f8f9fa;
-    color: #6c757d;
-    transition: background 0.3s, color 0.3s, border-top-color 0.3s;
+    width: 100%;
+    padding: 1.75rem 0 2rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    background: transparent;
+    color: inherit;
+    margin-top: 2rem;
 }
 
-.footer-dark {
-    background: #181a1b;
-    color: #858c91;
-    border-top: 1px solid #232425;
+.content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.footer-dark .content {
+    color: #94a3b8;
 }
 
 .link {
-    color: #007bff;
-    text-decoration: underline;
-    font-weight: 500;
-    margin-left: 6px;
-    transition: color 0.2s;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .link:hover {
-    color: #0056b3;
+    color: #1e40af;
     text-decoration: underline;
 }
 
 .link-dark {
-    color: #61dafb;
+    color: #60a5fa;
 }
 
 .link-dark:hover {
-    color: #289ad7;
+    color: #93c5fd;
 }

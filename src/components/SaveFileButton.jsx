@@ -17,9 +17,10 @@ const SaveFileButton = () => {
 			overlay={<Tooltip id="tt-save-file">Download as .txt</Tooltip>}
 		>
 			<Button
-				variant="outline-success"
+				variant="light"
 				onClick={handleSave}
 				aria-label="Download file"
+				className="app-icon-button"
 			>
 				<i className="bi bi-download" />
 			</Button>

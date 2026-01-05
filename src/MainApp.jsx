@@ -6,30 +6,32 @@ import StatsBar from "./StatsBar";
 import { EditorContext } from "./context/EditorContext";
 import useAutosave from "./hooks/useAutosave";
 import { Footer } from "./components/Footer/Footer";
+import { STORAGE_KEY, loadDraft } from "./utils/storage";
 
 const MainApp = () => {
 	const { content, setContent, showNotification } = useContext(EditorContext);
 
 	useEffect(() => {
-		const saved = localStorage.getItem("editor-content");
+		const saved = loadDraft(STORAGE_KEY);
 		if (saved && saved.length > 0) {
-			setContent(saved);
-			showNotification &&
-				showNotification("Loaded draft from local storage.", "success");
+			setContent(saved, { recordHistory: false, resetHistory: true });
+			showNotification?.("Loaded draft from local storage.", "success");
 		}
-		// eslint-disable-next-line
-	}, []);
-	useAutosave(content, showNotification);
+	}, [setContent, showNotification]);
+	useAutosave(content, { storageKey: STORAGE_KEY, delay: 800 });
 
 	return (
 		<>
-			<div className="container mx-auto p-4">
-				{/* <h1 className="mb-3">Online Text Editor</h1> */}
-				<Editor />
-				<StatsBar />
-				<Preview />
-				<Notification />
-			</div>
+			<main className="app-shell">
+				<div className="container app-container">
+					<section className="app-stack">
+						<Editor />
+						<StatsBar />
+						<Preview />
+					</section>
+					<Notification />
+				</div>
+			</main>
 			<Footer />
 		</>
 	);

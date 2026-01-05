@@ -1,10 +1,10 @@
-export function getStats ( html ) {
-    // Strip HTML tags for plain text calculation
-    const plain = html.replace( /<[^>]+>/g, ' ' ).replace( /\s+/g, ' ' ).trim();
-    const words = plain.length ? plain.split( " " ).length : 0;
-    const chars = plain.length;
-    const lines = plain.split( '\n' ).length;
+export function getStats(text = "") {
+	const normalized = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+	const trimmed = normalized.trim();
+	const words = trimmed ? trimmed.split(/\s+/).length : 0;
+	const chars = normalized.length;
+	const lines = normalized.length ? normalized.split("\n").length : 0;
 
-    return { words, chars, lines };
+	return { words, chars, lines };
 }
 

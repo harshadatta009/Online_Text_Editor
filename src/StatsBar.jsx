@@ -7,10 +7,22 @@ const StatsBar = () => {
 	const stats = getStats(content);
 
 	return (
-		<div className="d-flex gap-3 my-1 small">
-			<span>Words: {stats.words}</span>
-			<span>Characters: {stats.chars}</span>
-			<span>Lines: {stats.lines}</span>
+		<div className="stats-bar" aria-live="polite">
+			<span className="stats-pill">
+				<i className="bi bi-type" aria-hidden="true" />
+				<span>Words</span>
+				<span className="stats-value">{stats.words}</span>
+			</span>
+			<span className="stats-pill">
+				<i className="bi bi-123" aria-hidden="true" />
+				<span>Characters</span>
+				<span className="stats-value">{stats.chars}</span>
+			</span>
+			<span className="stats-pill">
+				<i className="bi bi-list-task" aria-hidden="true" />
+				<span>Lines</span>
+				<span className="stats-value">{stats.lines}</span>
+			</span>
 		</div>
 	);
 };

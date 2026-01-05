@@ -2,108 +2,86 @@ import React, { useContext } from "react";
 import { EditorContext } from "../../context/EditorContext";
 import "./Toolbar.module.css";
 
-const formatActions = [
-	{ label: "B", cmd: "bold", icon: <b>B</b>, title: "Bold (Ctrl+B)" },
-	{ label: "I", cmd: "italic", icon: <i>I</i>, title: "Italic (Ctrl+I)" },
-	{ label: "U", cmd: "underline", icon: <u>U</u>, title: "Underline (Ctrl+U)" },
-	{
-		label: "List",
-		cmd: "insertUnorderedList",
-		icon: <i className="bi-list-ul" />,
-		title: "Bulleted list",
-	},
-	{
-		label: "Numbered",
-		cmd: "insertOrderedList",
-		icon: <i className="bi-list-ol" />,
-		title: "Numbered list",
-	},
-	// Add more formatting actions as needed
-];
-
 const Toolbar = ({ editorRef }) => {
-	const { content, setContent, showNotification } = useContext(EditorContext);
+	const {
+		content,
+		setContent,
+		undo,
+		redo,
+		canUndo,
+		canRedo,
+		showNotification,
+	} = useContext(EditorContext);
 
-	const exec = (cmd) => {
-		document.execCommand(cmd);
-		showNotification(`${cmd} applied!`, "success");
-		editorRef.current && editorRef.current.focus();
-	};
+	const focusEditor = () => editorRef.current && editorRef.current.focus();
 
 	const handleUndo = () => {
-		document.execCommand("undo");
-		showNotification(`Undo`, "info");
+		if (!canUndo) return;
+		undo();
+		showNotification("Undo", "info");
+		focusEditor();
 	};
 
 	const handleRedo = () => {
-		document.execCommand("redo");
-		showNotification(`Redo`, "info");
-	};
-
-	const getPlainText = () => {
-		if (!editorRef.current) return "";
-		const div = document.createElement("div");
-		div.innerHTML = editorRef.current.innerHTML;
-		return div.textContent || "";
+		if (!canRedo) return;
+		redo();
+		showNotification("Redo", "info");
+		focusEditor();
 	};
 
 	const handleUpperCase = () => {
-		const text = getPlainText().toUpperCase();
-		editorRef.current.innerHTML = text;
+		const text = content.toUpperCase();
 		setContent(text);
 		showNotification("Converted to UPPERCASE", "success");
-		editorRef.current.focus();
+		focusEditor();
 	};
 
 	const handleLowerCase = () => {
-		const text = getPlainText().toLowerCase();
-		editorRef.current.innerHTML = text;
+		const text = content.toLowerCase();
 		setContent(text);
 		showNotification("Converted to lowercase", "success");
-		editorRef.current.focus();
+		focusEditor();
 	};
 
 	const handleRemoveSpaces = () => {
-		const text = getPlainText().replace(/\s+/g, " ").trim();
-		editorRef.current.innerHTML = text;
+		const text = content
+			.split(/\r?\n/)
+			.map((line) => line.replace(/[ \t]+/g, " ").trimEnd())
+			.join("\n")
+			.replace(/\n{3,}/g, "\n\n")
+			.trim();
 		setContent(text);
 		showNotification("Extra spaces removed", "info");
-		editorRef.current.focus();
+		focusEditor();
 	};
 
 	const handleCopy = async () => {
 		try {
-			await navigator.clipboard.writeText(getPlainText());
+			await navigator.clipboard.writeText(content);
 			showNotification("Copied to clipboard!", "success");
-			editorRef.current.focus();
+			focusEditor();
 		} catch {
 			showNotification("Failed to copy", "danger");
 		}
 	};
+
 	const handleClear = () => {
-		if (editorRef.current) editorRef.current.innerHTML = "";
 		setContent("");
 		showNotification("Editor cleared", "info");
-		editorRef.current && editorRef.current.focus();
+		focusEditor();
 	};
 
 	return (
-		<div className="btn-toolbar mb-2 gap-2 flex-wrap">
-			{formatActions.map((action) => (
-				<button
-					key={action.cmd}
-					type="button"
-					className="btn btn-outline-primary btn-sm"
-					title={action.title}
-					onClick={() => exec(action.cmd)}
-				>
-					{action.icon}
-				</button>
-			))}
+		<div
+			className="editor-toolbar"
+			role="toolbar"
+			aria-label="Editor tools"
+		>
 			<button
 				className="btn btn-outline-secondary btn-sm"
 				title="Undo"
 				onClick={handleUndo}
+				disabled={!canUndo}
 			>
 				<i className="bi-arrow-counterclockwise" />
 			</button>
@@ -111,6 +89,7 @@ const Toolbar = ({ editorRef }) => {
 				className="btn btn-outline-secondary btn-sm"
 				title="Redo"
 				onClick={handleRedo}
+				disabled={!canRedo}
 			>
 				<i className="bi-arrow-clockwise" />
 			</button>
@@ -120,14 +99,14 @@ const Toolbar = ({ editorRef }) => {
 				title="UPPERCASE"
 				onClick={handleUpperCase}
 			>
-				Aa↑
+				Aa
 			</button>
 			<button
 				className="btn btn-outline-secondary btn-sm"
 				title="lowercase"
 				onClick={handleLowerCase}
 			>
-				Aa↓
+				aa
 			</button>
 			<button
 				className="btn btn-outline-secondary btn-sm"
